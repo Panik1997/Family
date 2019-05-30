@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public abstract class FamilyMembers implements CheckEnglish{
 
@@ -17,7 +18,8 @@ public abstract class FamilyMembers implements CheckEnglish{
         members.add(new Family("Jakub", 32, 3200, true));
         members.add(new Family("Karolina", 56, 5200, false));
         members.add(new Family("Ewelina", 26, 18000, true));
-        members.add(new Family("Lukasz", 60, 6000, false));
+        members.add(new Family("Karol", 60, 6000, false));
+        members.add(new Family("Pawel", 64, 21000, true));
 
         System.out.println("Family members: ");
         for(Family fam: members){
@@ -55,5 +57,22 @@ public abstract class FamilyMembers implements CheckEnglish{
         }
         System.out.println();
         System.out.println("The oldest person in family is: " + tmp1.getName() + " and he/she is " + tmp2);
+
+        int tmp3 = 0;
+        System.out.println("Comparing names: ");
+        for(Family f1 : members){
+            for(Family f2 : members){
+                if(f1 == f2){
+                    continue;
+                }else{
+                    System.out.println("Comparing names" + f1.getName() + " with " + f2.getName());
+                    System.out.println(Objects.equals(f1.getName(), f2.getName()));
+                    if(Objects.equals(f1.getName(), f2.getName())){
+                        tmp3 += 1;
+                    }
+                }
+            }
+            System.out.println("The same name repeats: " + tmp3 + " times");
+        }
     }
 }
